@@ -50,13 +50,13 @@ public class Model implements Subject {
 		int x = Integer.parseInt(str[1]);
 		if (op == 1) {
 			p = cn.getBinomial(x);
-			BINOMIAL = ("P(X = "+str[1]+") = " + p + " ou " + p * 100 + "%");
+			BINOMIAL = ("P(X = "+str[1]+") = " + p + " or " + p * 100 + "%");
 		} else if (op == 2) {
 			p = somabin(cn, x);
-			BINOMIAL = ("P(X <= "+str[1]+") = " + p + " ou " + p * 100 + "%");
+			BINOMIAL = ("P(X <= "+str[1]+") = " + p + " or " + p * 100 + "%");
 		} else if (op == 3) {
 			p = 1 - somabin(cn, x);
-			BINOMIAL = ("P(X >= "+str[1]+") = " + p + " ou " + p * 100 + "%");
+			BINOMIAL = ("P(X >= "+str[1]+") = " + p + " or " + p * 100 + "%");
 		}
 
 		if (BINOMIAL != null) {

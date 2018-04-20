@@ -80,36 +80,40 @@ public class View implements Observer {
 
 					}
 					this.callController(listUp, update, op);
-
+					sendResponse = bot.execute(new SendMessage(update.message().chat().id(),
+							"Again?? ").replyMarkup(new ReplyKeyboardMarkup(new String[] {"Yes","No"})));
 				}
-				if (update.message().text().equals("/start") || denovo) {
+				else if (update.message().text().equals("/start")) {
 					sendResponse = bot.execute(new SendMessage(update.message().chat().id(),
-							"Estatistica da tia Nanci\n\n" + "Distribuição Binomial\n\n" + "Número total de provas: ")
-							/*.replyMarkup(new ReplyKeyboardMarkup(
-									new String[]{ "1","2","3"},
-									new String[]{"4","5","6"},
-									new String[]{"7","8","9"},
-									new String[]{".","0","/"}))*/
-							);
-					i = 0;
+							"Hello "+update.message().chat().firstName()+
+							", Here you can make statistical calculations to discover the binomial distribution "));
+					sendResponse = bot.execute(new SendMessage(update.message().chat().id(),
+							"Begin?? ").replyMarkup(new ReplyKeyboardMarkup(new String[] {"Yes","No"})));
+					
 					denovo = false;
-				} else if (i == 0) {
+				} 
+				else if (update.message().text().equals("Yes")) {
 					sendResponse = bot.execute(new SendMessage(update.message().chat().id(),
-							"Número de vezes que se quer a ocorrência do evento: "));
+							"Total number of events: ").replyMarkup(new ReplyKeyboardRemove()));
+					i = 0;
+					//denovo = false;
+				}else if (i == 0) {
+					sendResponse = bot.execute(new SendMessage(update.message().chat().id(),
+							"Event Occurrence Number: "));
 					listUp[i] = update.message().text();
 					i++;
 				} else if (i == 1) {
 					sendResponse = bot
-							.execute(new SendMessage(update.message().chat().id(), "Probabilidade do sucesso: "));
+							.execute(new SendMessage(update.message().chat().id(), "Probability of success: (0 - 1 or you can use fraction)"));
 					listUp[i] = update.message().text();
 					i++;
 				} else if (i == 2) {
 					sendResponse = bot
-							.execute(new SendMessage(update.message().chat().id(), "Probabilidade do fracasso: "));
+							.execute(new SendMessage(update.message().chat().id(), "Probability of failure: (0 - 1 or you can use fraction)"));
 					listUp[i] = update.message().text();
 					i++;
 				} else if (i == 3) {
-					sendResponse = bot.execute(new SendMessage(update.message().chat().id(), "Opções")
+					sendResponse = bot.execute(new SendMessage(update.message().chat().id(), "Options: ")
 							.replyMarkup(new ReplyKeyboardMarkup(new String[] { "X = x", "X <= x", "X >= x" })));
 					listUp[i] = update.message().text();
 					i++;

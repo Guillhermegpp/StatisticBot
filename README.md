@@ -1,16 +1,14 @@
 # StatisticBot
-Projeto de Engenharia de Software usando MVC
 
 
-> @StatisticsFatecBot
+#### @StatisticsFatecBot
 <br>
 
->> Bot para ajudar na Matéria de Estatistica Aplicada.
->> Realiza calculo de distribuição Binomial
+> Bot to do statistical calculations, for now calculating only binomial distribution
 
 ---
 ### Tools:
->> Messaging app Telegram, Programming language JAVA (software architecture standard MVC), Gradle and Eclipse. 
+> Messaging app Telegram, Programming language JAVA (software architecture standard MVC), Gradle and Eclipse. 
 
 ---
 ### Class Diagram:
@@ -19,6 +17,20 @@ Projeto de Engenharia de Software usando MVC
 
 <br>
 
+### To be implemented:
+> - Algorithm to do other statistical calculations
+> - Hosting in the Cloud Computing Heroku Environment
+
+### Calculations:
+<img height="200" src="screenshot/binomial.jpeg" />
+
+> - P(X = k) = probabilidade de que o evento se realize “k vezes” em “n provas”
+> - p = probabilidade do sucesso = probabilidade de que o evento se realize em uma só prova
+> - q = probabilidade do fracasso = probabilidade de que o evento não se realize durante uma prova
+> - n = número total de provas
+> - k = número de vezes que se quer a ocorrência do evento
+
+<br>
 ---
 ### The Bot:
 

@@ -22,33 +22,26 @@
 > - Hosting in the Cloud Computing Heroku Environment
 
 ### Calculations:
-<img height="200" src="screenshot/binomial.jpeg" />
+<img height="100" src="screenshot/binomial.jpeg" />
 
-> - P(X = k) = probabilidade de que o evento se realize “k vezes” em “n provas”
-> - p = probabilidade do sucesso = probabilidade de que o evento se realize em uma só prova
-> - q = probabilidade do fracasso = probabilidade de que o evento não se realize durante uma prova
-> - n = número total de provas
-> - k = número de vezes que se quer a ocorrência do evento
+> - P(X = k) = probability that the event takes place "k times" in "n evidence"
+> - p = probability of success = probability that the event will take place in a single event
+> - q = probability of failure = probability that the event will not occur during a test
+> - n = total number of tests
+> - k = number of times the event is wanted
 
 <br>
+
 ---
+
 ### The Bot:
 
 <img height="350" src="screenshot/aboutbot.PNG" />
 <br>
-
-<img height="350" src="screenshot/initialscreen.PNG" />
-<br>
-
-#### BOT em execução, com opções de botões
 <img height="350" src="screenshot/bot1.PNG" />
 <br>
-
 <img height="350" src="screenshot/bot2.PNG" />
-
 <br>
 <img height="350" src="screenshot/bot3.PNG" />
-
-
 <br>
-<img height="350" src="screenshot/bot4.PNG" />
+

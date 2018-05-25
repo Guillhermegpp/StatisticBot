@@ -18,7 +18,7 @@ import com.pengrad.telegrambot.response.SendResponse;
 
 public class View implements Observer {
 
-	TelegramBot bot = TelegramBotAdapter.build("550253915:AAHkTKMBkG774vyW4tMSIBH9gcDaZsUwlcE");
+	TelegramBot bot = TelegramBotAdapter.build("583574651:AAFp_Ml30_mTLnaehZPTSjA_wKkHt7XQN4Q");
 	// Object that receives messages
 	GetUpdatesResponse updatesResponse;
 	// Object that send responses
@@ -32,7 +32,7 @@ public class View implements Observer {
 
 	boolean searchBehaviour = false;
 	boolean denovo = false;
-	int i = 0;
+	int i = -1;
 	int op = 0;
 	private Model model;
 
@@ -81,18 +81,19 @@ public class View implements Observer {
 					}
 					this.callController(listUp, update, op);
 					sendResponse = bot.execute(new SendMessage(update.message().chat().id(),
-							"Again?? ").replyMarkup(new ReplyKeyboardMarkup(new String[] {"Yes","No"})));
+							"Options: ").replyMarkup(new ReplyKeyboardMarkup(new String[] {"Binomial","History"})
+									.oneTimeKeyboard(false).resizeKeyboard(true).selective(true)));
 				}
 				else if (update.message().text().equals("/start")) {
 					sendResponse = bot.execute(new SendMessage(update.message().chat().id(),
 							"Hello "+update.message().chat().firstName()+
-							", Here you can make statistical calculations to discover the binomial distribution "));
-					sendResponse = bot.execute(new SendMessage(update.message().chat().id(),
-							"Begin?? ").replyMarkup(new ReplyKeyboardMarkup(new String[] {"Yes","No"})));
+						 ", Here you can make statistical calculations to discover the binomial distribution ")
+							.replyMarkup(new ReplyKeyboardMarkup(new String[] { "Binomial", "History" })
+									.oneTimeKeyboard(false).resizeKeyboard(true).selective(true)));
 					
 					denovo = false;
 				} 
-				else if (update.message().text().equals("Yes")) {
+				else if (update.message().text().equals("Binomial")) {
 					sendResponse = bot.execute(new SendMessage(update.message().chat().id(),
 							"Total number of events: ").replyMarkup(new ReplyKeyboardRemove()));
 					i = 0;
@@ -114,7 +115,8 @@ public class View implements Observer {
 					i++;
 				} else if (i == 3) {
 					sendResponse = bot.execute(new SendMessage(update.message().chat().id(), "Options: ")
-							.replyMarkup(new ReplyKeyboardMarkup(new String[] { "X = x", "X <= x", "X >= x" })));
+							.replyMarkup(new ReplyKeyboardMarkup(new String[] { "X = x", "X <= x", "X >= x" })
+									.oneTimeKeyboard(false).resizeKeyboard(true).selective(true)));
 					listUp[i] = update.message().text();
 					i++;
 					this.searchBehaviour = true;

@@ -19,4 +19,11 @@ public class ControllerBinomial implements Controller {
 
 	}
 
+	@Override
+	public void search(Update update) throws Exception {
+		// TODO Auto-generated method stub
+		view.sendTypingMessage(update);
+		model.getBinomial(update);
+	}
+
 }

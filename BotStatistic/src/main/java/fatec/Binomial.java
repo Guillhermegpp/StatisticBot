@@ -5,6 +5,11 @@ public class Binomial {
 	int n, k;
 	double p, q;
 	Molde m = new Molde();
+	long chatId;
+
+	public void setChatId(long chatId) {
+		this.chatId = chatId;
+	}
 
 	public Binomial(int a, int b, String c, String d) throws Exception {
 		n = a;
@@ -22,5 +27,16 @@ public class Binomial {
 		System.out.println("%");
 		return P;
 
+	}
+
+	public long getChatId() {
+		return chatId;
+	}
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
 	}
 }

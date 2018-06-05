@@ -18,7 +18,7 @@ import com.pengrad.telegrambot.response.SendResponse;
 
 public class View implements Observer {
 
-	TelegramBot bot = TelegramBotAdapter.build("583574651:AAFp_Ml30_mTLnaehZPTSjA_wKkHt7XQN4Q");
+	TelegramBot bot = TelegramBotAdapter.build("604870961:AAG-o7ialcabIkQd3rM4EJfv3FF6AcybFk0");
 	// Object that receives messages
 	GetUpdatesResponse updatesResponse;
 	// Object that send responses
@@ -81,14 +81,14 @@ public class View implements Observer {
 					}
 					this.callController(listUp, update, op);
 					sendResponse = bot.execute(new SendMessage(update.message().chat().id(),
-							"Options: ").replyMarkup(new ReplyKeyboardMarkup(new String[] {"Binomial","History"})
+							"Options: ").replyMarkup(new ReplyKeyboardMarkup(new String[] {"Binomial","History","OPAA"})
 									.oneTimeKeyboard(false).resizeKeyboard(true).selective(true)));
 				}
 				else if (update.message().text().equals("/start")) {
 					sendResponse = bot.execute(new SendMessage(update.message().chat().id(),
 							"Hello "+update.message().chat().firstName()+
 						 ", Here you can make statistical calculations to discover the binomial distribution ")
-							.replyMarkup(new ReplyKeyboardMarkup(new String[] { "Binomial", "History" })
+							.replyMarkup(new ReplyKeyboardMarkup(new String[] { "Binomial", "History","Opaa" })
 									.oneTimeKeyboard(false).resizeKeyboard(true).selective(true)));
 					
 					denovo = false;
@@ -98,6 +98,18 @@ public class View implements Observer {
 							"Total number of events: ").replyMarkup(new ReplyKeyboardRemove()));
 					i = 0;
 					//denovo = false;
+				
+				}else if (update.message().text().equals("History")) {
+					
+					this.callController(update);
+					sendResponse = bot.execute(new SendMessage(update.message().chat().id(),
+							"Options: ").replyMarkup(new ReplyKeyboardMarkup(new String[] {"Binomial","History"})
+									.oneTimeKeyboard(false).resizeKeyboard(true).selective(true)));
+					i = -1;
+					//denovo = false;
+				
+				
+			
 				}else if (i == 0) {
 					sendResponse = bot.execute(new SendMessage(update.message().chat().id(),
 							"Event Occurrence Number: "));
@@ -131,6 +143,10 @@ public class View implements Observer {
 
 	private void callController(String[] listUp, Update update, int op) throws Exception {
 		this.controllerSearch.search(listUp, update, op);
+
+	}
+	private void callController(Update update) throws Exception {
+		this.controllerSearch.search(update);
 
 	}
 

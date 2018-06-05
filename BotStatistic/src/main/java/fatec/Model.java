@@ -3,6 +3,8 @@ package fatec;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.pengrad.telegrambot.model.Update;
 
 public class Model implements Subject {
@@ -58,7 +60,10 @@ public class Model implements Subject {
 			p = 1 - somabin(cn, x);
 			BINOMIAL = ("P(X >= "+str[1]+") = " + p + " or " + p * 100 + "%");
 		}
-
+		cn.setChatId(update.message().chat().id());
+		cn.setResult(BINOMIAL);
+		ModelDAO.addHistoric(cn);
+		
 		if (BINOMIAL != null) {
 			this.notifyObservers(update.message().chat().id(), BINOMIAL);
 		} else {
@@ -70,5 +75,24 @@ public class Model implements Subject {
 	public void searchPoisson() {
 		// metodo para 2 bimestre
 	}
+
+	public void getBinomial(Update update) {
+		String nome = update.message().chat().firstName();
+		List<Binomial> userBinomial = ModelDAO.getBinomial(update);
+		if (userBinomial != null) {
+			String json = formattedJson(userBinomial);
+			this.notifyObservers(update.message().chat().id(), "Encontrei os valores para você " + nome + "\n" + json);
+		} else {
+			this.notifyObservers(update.message().chat().id(),
+					"Não encontrei nada aqui " + nome + " desculpe \uD83D\uDE1E");
+		}
+	}
+	
+	public static String formattedJson(List<Binomial> userBinomial) {
+		//Collections.sort(userBinomial);
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String json = gson.toJson(userBinomial);
+		return json;
+}
 
 }

@@ -56,7 +56,13 @@ public class View implements Observer {
 
 			// Queue of messages
 			List<Update> updates = updatesResponse.updates();
+			//updates.clear();
+			for (Update update : updates) {
 
+				// updating queue's index
+				queuesIndex = update.updateId() + 1;
+			}
+			
 			// taking each message in the Queue
 			for (Update update : updates) {
 
@@ -81,14 +87,14 @@ public class View implements Observer {
 					}
 					this.callController(listUp, update, op);
 					sendResponse = bot.execute(new SendMessage(update.message().chat().id(),
-							"Options: ").replyMarkup(new ReplyKeyboardMarkup(new String[] {"Binomial","History","OPAA"})
+							"Options: ").replyMarkup(new ReplyKeyboardMarkup(new String[] {"Binomial","History"})
 									.oneTimeKeyboard(false).resizeKeyboard(true).selective(true)));
 				}
 				else if (update.message().text().equals("/start")) {
 					sendResponse = bot.execute(new SendMessage(update.message().chat().id(),
 							"Hello "+update.message().chat().firstName()+
 						 ", Here you can make statistical calculations to discover the binomial distribution ")
-							.replyMarkup(new ReplyKeyboardMarkup(new String[] { "Binomial", "History","Opaa" })
+							.replyMarkup(new ReplyKeyboardMarkup(new String[] { "Binomial", "History"})
 									.oneTimeKeyboard(false).resizeKeyboard(true).selective(true)));
 					
 					denovo = false;

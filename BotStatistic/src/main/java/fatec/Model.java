@@ -1,5 +1,6 @@
 package fatec;
 
+import java.text.DecimalFormat;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -46,22 +47,28 @@ public class Model implements Subject {
 	}
 
 	public void serchBin(String[] str, Update update, int op) throws Exception {
+		DecimalFormat saida = new DecimalFormat("0.00000");
+		DecimalFormat saida2 = new DecimalFormat("0.00");
+		
 		double p = 0;
 		String BINOMIAL = null;
 		Binomial cn = new Binomial(Integer.parseInt(str[0]), Integer.parseInt(str[1]), str[2], str[3]);
 		int x = Integer.parseInt(str[1]);
 		if (op == 1) {
 			p = cn.getBinomial(x);
-			BINOMIAL = ("P(X = "+str[1]+") = " + p + " or " + p * 100 + "%");
+			BINOMIAL = ("P(X = "+str[1]+") = " + saida.format(p) + " or " + saida2.format(p*100) + "%");
 		} else if (op == 2) {
 			p = somabin(cn, x);
-			BINOMIAL = ("P(X <= "+str[1]+") = " + p + " or " + p * 100 + "%");
+			BINOMIAL = ("P(X <= "+str[1]+") = " + saida.format(p) + " or " + saida2.format(p*100) + "%");
 		} else if (op == 3) {
 			p = 1 - somabin(cn, x);
-			BINOMIAL = ("P(X >= "+str[1]+") = " + p + " or " + p * 100 + "%");
+			BINOMIAL = ("P(X >= "+str[1]+") = " + saida.format(p) + " or " + saida2.format(p*100) + "%");
 		}
 		cn.setChatId(update.message().chat().id());
 		cn.setResult(BINOMIAL);
+		
+		
+		
 		ModelDAO.addHistoric(cn);
 		
 		if (BINOMIAL != null) {
@@ -72,9 +79,7 @@ public class Model implements Subject {
 
 	}
 
-	public void searchPoisson() {
-		// metodo para 2 bimestre
-	}
+	
 
 	public void getBinomial(Update update) {
 		String nome = update.message().chat().firstName();

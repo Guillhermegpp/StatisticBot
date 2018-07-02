@@ -26,11 +26,11 @@ public class ModelDAO {
 
 	public static ObjectContainer connect() {
 		if (bancoProblemas == null){
-			//try{
-			//	bancoProblemas = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "bd\\bancoProblemas.db4o");
-			//}catch(Exception e){
+			try{
+				bancoProblemas = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "bd\\bancoProblemas.db4o");
+			}catch(Exception e){
 				bancoProblemas = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "bd/bancoProblemas.db4o");
-			//}
+			}
 		}	
 		return bancoProblemas;
 	}

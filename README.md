@@ -13,7 +13,7 @@
 ---
 ### Class Diagram:
 
-<img height="400" src="screenshot/CaseDiagram.jpeg" />
+<img height="400" src="screenshot/ClassDiagram.png" />
 
 <br>
 
@@ -43,7 +43,5 @@
 <img height="350" src="screenshot/bot2.PNG" />
 <br>
 <img height="350" src="screenshot/bot3.PNG" />
-<br>
-<img height="350" src="screenshot/bot4.PNG" />
 <br>
 

@@ -1,7 +1,7 @@
 # StatisticBot
 
 
-#### @StatisticsFatecBot
+#### @botestatisticafatecbot
 <br>
 
 > Bot to do statistical calculations, for now calculating only binomial distribution

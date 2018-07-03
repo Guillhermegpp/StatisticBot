@@ -17,10 +17,6 @@
 
 <br>
 
-### To be implemented:
-> - Algorithm to do other statistical calculations
-> - Hosting in the Cloud Computing Heroku Environment
-
 ### Calculations:
 <img height="100" src="screenshot/binomial.jpeg" />
 
